@@ -10,7 +10,6 @@ import geekbrains.ru.translator.model.data.DataModel
 import geekbrains.ru.translator.view.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_description.*
 import kotlinx.android.synthetic.main.activity_history.*
-import org.koin.android.viewmodel.ext.android.viewModel
 
 class HistoryActivity : BaseActivity<AppState, HistoryInteractor>() {
 

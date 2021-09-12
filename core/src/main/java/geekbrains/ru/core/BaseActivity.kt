@@ -1,4 +1,4 @@
-package geekbrains.ru.translator.view.base
+package geekbrains.ru.core
 
 import android.os.Bundle
 import android.os.PersistableBundle

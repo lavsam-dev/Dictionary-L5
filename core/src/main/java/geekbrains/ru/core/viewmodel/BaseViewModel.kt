@@ -1,4 +1,4 @@
-package geekbrains.ru.translator.viewmodel
+package geekbrains.ru.core.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
