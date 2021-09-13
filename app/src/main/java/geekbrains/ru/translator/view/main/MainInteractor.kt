@@ -1,10 +1,10 @@
 package geekbrains.ru.translator.view.main
 
-import geekbrains.ru.translator.model.data.AppState
-import geekbrains.ru.translator.model.data.DataModel
-import geekbrains.ru.translator.model.repository.Repository
-import geekbrains.ru.translator.model.repository.RepositoryLocal
-import geekbrains.ru.translator.viewmodel.Interactor
+import geekbrains.ru.core.viewmodel.Interactor
+import geekbrains.ru.model.data.AppState
+import geekbrains.ru.model.data.DataModel
+import geekbrains.ru.repository.Repository
+import geekbrains.ru.repository.RepositoryLocal
 
 class MainInteractor(
     private val repositoryRemote: Repository<List<DataModel>>,

@@ -4,13 +4,12 @@ import android.os.Bundle
 import android.os.PersistableBundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import geekbrains.ru.translator.R
-import geekbrains.ru.translator.model.data.AppState
-import geekbrains.ru.translator.model.data.DataModel
-import geekbrains.ru.translator.utils.network.isOnline
-import geekbrains.ru.translator.utils.ui.AlertDialogFragment
-import geekbrains.ru.translator.viewmodel.BaseViewModel
-import geekbrains.ru.translator.viewmodel.Interactor
+import geekbrains.ru.core.viewmodel.BaseViewModel
+import geekbrains.ru.core.viewmodel.Interactor
+import geekbrains.ru.model.data.AppState
+import geekbrains.ru.model.data.DataModel
+import geekbrains.ru.utils.network.isOnline
+import geekbrains.ru.utils.ui.AlertDialogFragment
 import kotlinx.android.synthetic.main.loading_layout.*
 
 private const val DIALOG_FRAGMENT_TAG = "74a54328-5d62-46bf-ab6b-cbf5d8c79522"
@@ -53,7 +52,7 @@ abstract class BaseActivity<T : AppState, I : Interactor<T>> : AppCompatActivity
                 if (appState.progress != null) {
                     progress_bar_horizontal.visibility = View.VISIBLE
                     progress_bar_round.visibility = View.GONE
-                    progress_bar_horizontal.progress = appState.progress
+                    progress_bar_horizontal.progress = appState.progress!!
                 } else {
                     progress_bar_horizontal.visibility = View.GONE
                     progress_bar_round.visibility = View.VISIBLE

@@ -2,7 +2,7 @@ package geekbrains.ru.core.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import geekbrains.ru.translator.model.data.AppState
+import geekbrains.ru.model.data.AppState
 import kotlinx.coroutines.*
 
 abstract class BaseViewModel<T : AppState>(
