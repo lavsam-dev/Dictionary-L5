@@ -10,20 +10,18 @@ import android.widget.EditText
 import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.Observer
 import com.google.android.material.textfield.TextInputLayout
+import geekbrains.ru.core.BaseActivity
+import geekbrains.ru.history.view.history.HistoryActivity
+import geekbrains.ru.model.data.AppState
+import geekbrains.ru.model.data.DataModel
 import geekbrains.ru.translator.R
-import geekbrains.ru.translator.model.data.AppState
-import geekbrains.ru.translator.model.data.DataModel
 import geekbrains.ru.translator.utils.convertMeaningsToString
-import geekbrains.ru.translator.utils.getStringFromEditable
-import geekbrains.ru.translator.utils.network.isOnline
-import geekbrains.ru.translator.view.base.BaseActivity
 import geekbrains.ru.translator.view.descriptionscreen.DescriptionActivity
-import geekbrains.ru.translator.view.history.HistoryActivity
 import geekbrains.ru.translator.view.main.adapter.MainAdapter
+import geekbrains.ru.utils.getStringFromEditable
+import geekbrains.ru.utils.network.isOnline
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.search_dialog_fragment.*
 import org.koin.android.viewmodel.ext.android.viewModel
-
 
 private const val BOTTOM_SHEET_FRAGMENT_DIALOG_TAG = "74a54328-5d62-46bf-ab6b-cbf5fgt0-092395"
 
@@ -37,6 +35,7 @@ class MainActivity : BaseActivity<AppState, MainInteractor>() {
             searchDialogFragment.setOnSearchClickListener(onSearchClickListener)
             searchDialogFragment.show(supportFragmentManager, BOTTOM_SHEET_FRAGMENT_DIALOG_TAG)
         }
+
     private val onListItemClickListener: MainAdapter.OnListItemClickListener =
         object : MainAdapter.OnListItemClickListener {
             override fun onItemClick(data: DataModel) {
@@ -45,7 +44,7 @@ class MainActivity : BaseActivity<AppState, MainInteractor>() {
                         this@MainActivity,
                         data.text!!,
                         convertMeaningsToString(data.meanings!!),
-                        data.meanings[0].imageUrl
+                        data.meanings!![0].imageUrl
                     )
                 )
             }
@@ -109,8 +108,8 @@ class MainActivity : BaseActivity<AppState, MainInteractor>() {
     private fun showAlertWithTextInputLayout(context: Context) {
         val textInputLayout = TextInputLayout(context)
         textInputLayout.setPadding(
-            resources.getDimensionPixelOffset(R.dimen.dp_19),0,
-            resources.getDimensionPixelOffset(R.dimen.dp_19),0
+            resources.getDimensionPixelOffset(R.dimen.dp_19), 0,
+            resources.getDimensionPixelOffset(R.dimen.dp_19), 0
         )
         val input = EditText(context)
         textInputLayout.hint = "Word for search"
@@ -123,7 +122,8 @@ class MainActivity : BaseActivity<AppState, MainInteractor>() {
             .setPositiveButton("Search") { dialog, _ ->
                 // input.text.toString() все ломает
                 startActivity(
-                    HistoryActivity.getIntent(this, getStringFromEditable(input.text)))
+                    HistoryActivity.getIntent(this, getStringFromEditable(input.text))
+                )
                 dialog.cancel()
             }
             .setNegativeButton("Cancel") { dialog, _ ->
